@@ -193,8 +193,8 @@
                 </plugin>
                 <!-- Skip Staging Plugin -->
                 <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <groupId>org.sonatype.central</groupId>
+                    <artifactId>central-publishing-maven-plugin</artifactId>
                     <inherited>false</inherited>
                 </plugin>
             </plugins>
