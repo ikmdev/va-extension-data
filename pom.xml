@@ -6,7 +6,7 @@
     <parent>
         <groupId>dev.ikm.tinkar</groupId>
         <artifactId>snomed-ct-data-bom</artifactId>
-        <version>1.10.0</version>
+        <version>1.14.0</version>
         <relativePath/>
     </parent>
 
@@ -193,8 +193,8 @@
                 </plugin>
                 <!-- Skip Staging Plugin -->
                 <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <groupId>org.sonatype.central</groupId>
+                    <artifactId>central-publishing-maven-plugin</artifactId>
                     <inherited>false</inherited>
                 </plugin>
             </plugins>
