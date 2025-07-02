@@ -50,28 +50,28 @@ public class VaExtensionStarterDataMojo extends AbstractMojo
             PrimitiveData.start();
 
             Composer composer = new Composer("VA Extension Starter Data Composer");
+            EntityProxy.Concept vaExtensionAuthor = EntityProxy.Concept.make("VA Extension Starter Data Author", UuidT5Generator.get(namespace, "VA Extension Starter Data Author"));
 
             Session session = composer.open(State.ACTIVE,
-                    TinkarTerm.USER,
+                    vaExtensionAuthor,
                     TinkarTerm.PRIMORDIAL_MODULE,
                     TinkarTerm.PRIMORDIAL_PATH);
 
-            EntityProxy.Concept vaExtensionAuthor = EntityProxy.Concept.make("VA Extension Author", UuidT5Generator.get(namespace, "VA Extension Author"));
             session.compose((ConceptAssembler concept) -> concept
                     .concept(vaExtensionAuthor)
                     .attach((FullyQualifiedName fqn) -> fqn
                             .language(ENGLISH_LANGUAGE)
-                            .text("VA Extension Author")
+                            .text("VA Extension Starter Data Author")
                             .caseSignificance(DESCRIPTION_NOT_CASE_SENSITIVE)
                     )
                     .attach((Synonym synonym)-> synonym
                             .language(ENGLISH_LANGUAGE)
-                            .text("VA Extension Author")
+                            .text("VA Extension Starter Data Author")
                             .caseSignificance(DESCRIPTION_NOT_CASE_SENSITIVE)
                     )
                     .attach((Definition definition) -> definition
                             .language(ENGLISH_LANGUAGE)
-                            .text("VA Snomed Extension Author")
+                            .text("VA Snomed Extension Starter Data Author")
                             .caseSignificance(DESCRIPTION_NOT_CASE_SENSITIVE)
                     )
                     .attach((Identifier identifier) -> identifier

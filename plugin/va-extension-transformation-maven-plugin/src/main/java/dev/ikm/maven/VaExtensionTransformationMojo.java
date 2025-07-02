@@ -1,11 +1,22 @@
 package dev.ikm.maven;
 
+import dev.ikm.tinkar.common.id.PublicIds;
 import dev.ikm.tinkar.common.service.CachingService;
 import dev.ikm.tinkar.common.service.PrimitiveData;
 import dev.ikm.tinkar.common.service.ServiceKeys;
 import dev.ikm.tinkar.common.service.ServiceProperties;
 import dev.ikm.tinkar.composer.Composer;
+import dev.ikm.tinkar.composer.Session;
+import dev.ikm.tinkar.composer.assembler.ConceptAssembler;
+import dev.ikm.tinkar.composer.template.Definition;
+import dev.ikm.tinkar.composer.template.FullyQualifiedName;
+import dev.ikm.tinkar.composer.template.Identifier;
+import dev.ikm.tinkar.composer.template.StatedAxiom;
+import dev.ikm.tinkar.composer.template.Synonym;
 import dev.ikm.tinkar.entity.EntityService;
+import dev.ikm.tinkar.terms.EntityProxy;
+import dev.ikm.tinkar.terms.State;
+import dev.ikm.tinkar.terms.TinkarTerm;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
@@ -23,6 +34,9 @@ import java.util.Arrays;
 import java.util.UUID;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
+import static dev.ikm.tinkar.terms.TinkarTerm.DESCRIPTION_NOT_CASE_SENSITIVE;
+import static dev.ikm.tinkar.terms.TinkarTerm.ENGLISH_LANGUAGE;
 
 @Mojo(name = "run-va-extension-transformation", defaultPhase = LifecyclePhase.INSTALL)
 public class VaExtensionTransformationMojo extends AbstractMojo {
@@ -138,6 +152,7 @@ public class VaExtensionTransformationMojo extends AbstractMojo {
         EntityService.get().beginLoadPhase();
         try {
             Composer composer = new Composer("VA Extension Transformer Composer");
+            createAuthor(composer);
             processFilesFromInput(inputFileOrDirectory, composer);
             composer.commitAllSessions();
         } finally {
@@ -145,6 +160,42 @@ public class VaExtensionTransformationMojo extends AbstractMojo {
             PrimitiveData.stop();
             LOG.info("########## VA Extension Transformer Finishing...");
         }
+    }
+
+    private void createAuthor(Composer composer) {
+        EntityProxy.Concept vaExtensionAuthor = VaExtensionUtility.getUserConcept(namespace);
+        EntityProxy.Concept vaExtensionModule = EntityProxy.Concept.make(PublicIds.of(VaExtensionUtility.generateUUID(namespace, "11000161103")));
+
+        Session session = composer.open(State.ACTIVE,
+                vaExtensionAuthor,
+                vaExtensionModule,
+                TinkarTerm.DEVELOPMENT_PATH);
+
+        session.compose((ConceptAssembler concept) -> concept
+                .concept(vaExtensionAuthor)
+                .attach((FullyQualifiedName fqn) -> fqn
+                        .language(ENGLISH_LANGUAGE)
+                        .text("VA Extension Author")
+                        .caseSignificance(DESCRIPTION_NOT_CASE_SENSITIVE)
+                )
+                .attach((Synonym synonym)-> synonym
+                        .language(ENGLISH_LANGUAGE)
+                        .text("VA Extension Author")
+                        .caseSignificance(DESCRIPTION_NOT_CASE_SENSITIVE)
+                )
+                .attach((Definition definition) -> definition
+                        .language(ENGLISH_LANGUAGE)
+                        .text("VA Snomed Extension Author")
+                        .caseSignificance(DESCRIPTION_NOT_CASE_SENSITIVE)
+                )
+                .attach((Identifier identifier) -> identifier
+                        .source(TinkarTerm.UNIVERSALLY_UNIQUE_IDENTIFIER)
+                        .identifier(vaExtensionAuthor.asUuidArray()[0].toString())
+                )
+                .attach((StatedAxiom statedAxiom) -> statedAxiom
+                        .isA(TinkarTerm.USER)
+                )
+        );
     }
 
     private void initializeDatastore(File datastore) {
