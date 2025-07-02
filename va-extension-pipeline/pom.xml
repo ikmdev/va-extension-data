@@ -4,7 +4,7 @@
     <parent>
         <groupId>dev.ikm.vaextension</groupId>
         <artifactId>va-extension-data</artifactId>
-        <version>1.0.0-IKDT-1059-va-extension-dependencies-and-author-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <groupId>dev.ikm.maven</groupId>
@@ -19,7 +19,7 @@
             <plugin>
                 <groupId>dev.ikm.maven</groupId>
                 <artifactId>va-extension-transformation-maven-plugin</artifactId>
-                <version>1.0.0-IKDT-1059-va-extension-dependencies-and-author-SNAPSHOT</version>
+                <version>1.0.0-SNAPSHOT</version>
                 <configuration>
                     <namespaceString>${origin.namespace}</namespaceString>
                     <datastorePath>${dataStoreLocation}/${dataStore}</datastorePath>
