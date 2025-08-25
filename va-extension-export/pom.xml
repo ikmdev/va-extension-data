@@ -76,7 +76,7 @@
                                     </formats>
                                     <fileSets>
                                         <fileSet>
-                                            <outputDirectory>${dataStore}</outputDirectory>
+                                            <outputDirectory>va-extension</outputDirectory>
                                             <directory>${dataStoreLocation}/${dataStore}</directory>
                                             <includes>
                                                 <include>**</include>
