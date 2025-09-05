@@ -13,7 +13,7 @@ Follow these instructions to generate a va-extension dataset:
 git clone [Rep URL]
 ```
 
-2. Change local directory to `snomva-extension-data`
+2. Change local directory to `va-extension-data`
 
 3. Download US or International RF2 Files from SNOMED CT: https://www.nlm.nih.gov/healthit/snomedct/index.html
 
@@ -24,7 +24,9 @@ git clone [Rep URL]
 
 6. Create a ~/Solor directory and ensure ~/Solor/generated-data does not exist or is empty.
 
-7. Enter the following command to build the dataset:
+7. You can create a reasoned or unreasoned dataset by either including or commenting out the va-extension-data/pom.xml <module>va-extension-reasoner</module>
+
+8. Enter the following command to build the dataset:
 
 ```bash
 mvn clean install -U "-DMaven.build.cache.enable=false"
@@ -36,4 +38,3 @@ mvn clean install -U "-DMaven.build.cache.enable=false"
 mvn deploy -f va-extension-export "-DdeployToNexus=true" "-Dmaven.deploy.skip=true" "-Dmaven.build.cache.enabled=false"
 ```
 
-9. You can create a reasoned or unreasoned dataset by either including or commenting out the va-extension-data/pom.xml <module>va-extension-reasoner</module>
