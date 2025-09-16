@@ -31,7 +31,7 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>dev.ikm.data.vaextension</groupId>
-                                    <artifactId>va-extension-origin</artifactId>
+                                    <artifactId>vaextension-origin</artifactId>
                                     <version>vaextension-${source.version}+1.0.0-SNAPSHOT</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
