@@ -17,13 +17,39 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-origin-data-dependency</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <stripVersion>true</stripVersion>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>dev.ikm.data.vaextension</groupId>
+                                    <artifactId>va-extension-origin</artifactId>
+                                    <version>vaextension-${source.version}+1.0.0-SNAPSHOT</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/input-data</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        
+            <plugin>
                 <groupId>dev.ikm.maven</groupId>
                 <artifactId>va-extension-transformation-maven-plugin</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
                 <configuration>
                     <namespaceString>${origin.namespace}</namespaceString>
-                    <datastorePath>${dataStoreLocation}/${dataStore}</datastorePath>
-                    <inputDirectoryPath>${user.home}/.m2/repository/dev/ikm/vaextension/va-extension-origin/${project.version}/va-extension-origin-${project.version}-data.zip</inputDirectoryPath>
+                    <datastorePath>${project.build.directory}/vaextension</datastorePath>
+                    <inputDirectoryPath>${project.build.directory}/input-data/vaextension-origin.zip</inputDirectoryPath>
                     <dataOutputPath>${project.build.directory}</dataOutputPath>
                 </configuration>
                 <executions>
