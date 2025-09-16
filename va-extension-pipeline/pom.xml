@@ -32,10 +32,10 @@
                                 <artifactItem>
                                     <groupId>dev.ikm.data.vaextension</groupId>
                                     <artifactId>va-extension-origin</artifactId>
-                                    <version>${dataStore}-${source.version}+1.0.0-SNAPSHOT</version>
+                                    <version>vaextension-${source.version}+1.0.0-SNAPSHOT</version>
                                     <type>zip</type>
                                     <overWrite>true</overWrite>
-                                    <outputDirectory>${dataStoreLocation}/input-data</outputDirectory>
+                                    <outputDirectory>${project.build.directory}/input-data</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
@@ -48,7 +48,7 @@
                 <artifactId>va-extension-transformation-maven-plugin</artifactId>
                 <configuration>
                     <namespaceString>${origin.namespace}</namespaceString>
-                    <datastorePath>${dataStoreLocation}/${dataStore}</datastorePath>
+                    <datastorePath>${project.build.directory}/vaextension</datastorePath>
                     <inputDirectoryPath>${project.build.directory}/input-data/vaextension-origin.zip</inputDirectoryPath>
                     <dataOutputPath>${project.build.directory}</dataOutputPath>
                 </configuration>
