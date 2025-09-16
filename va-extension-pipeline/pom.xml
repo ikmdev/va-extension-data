@@ -49,7 +49,7 @@
                 <configuration>
                     <namespaceString>${origin.namespace}</namespaceString>
                     <datastorePath>${dataStoreLocation}/${dataStore}</datastorePath>
-                    <inputDirectoryPath>${user.home}/.m2/repository/dev/ikm/vaextension/va-extension-origin/${project.version}/va-extension-origin-${project.version}-data.zip</inputDirectoryPath>
+                    <inputDirectoryPath>${project.build.directory}/input-data/vaextension-origin.zip</inputDirectoryPath>
                     <dataOutputPath>${project.build.directory}</dataOutputPath>
                 </configuration>
                 <executions>

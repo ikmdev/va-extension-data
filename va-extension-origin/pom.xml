@@ -22,6 +22,7 @@
 		<data-artifact.groupId>dev.ikm.data.vaextension</data-artifact.groupId>
 		<data-artifact.artifactId>va-extension-origin</data-artifact.artifactId>
 		<data-artifact.version>${dataStore}-${source.version}+1.0.0-SNAPSHOT</data-artifact.version>
+		<inputDirectoryPath>${project.build.directory}/input-data/vaextension-origin.zip</inputDirectoryPath>
 	</properties>
 
 	<profiles>
