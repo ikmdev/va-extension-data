@@ -81,6 +81,11 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>dev.ikm.maven</groupId>
+                <artifactId>va-extension-transformation-maven-plugin</artifactId>
+                <version>${project.version}</version>
+            </dependency>        
+            <dependency>
                 <groupId>dev.ikm.tinkar</groupId>
                 <artifactId>entity-provider</artifactId>
                 <version>${tinkar-core.version}</version>
@@ -177,6 +182,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    
     <build>
         <pluginManagement>
             <plugins>
@@ -223,15 +229,48 @@
                 <plugin>
                     <groupId>dev.ikm.maven</groupId>
                     <artifactId>va-extension-starterdata-maven-plugin</artifactId>
-                    <version>1.0.0-SNAPSHOT</version>
+                    <version>${project.version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>dev.ikm.maven</groupId>
+                    <artifactId>va-extension-transformation-maven-plugin</artifactId>
+                    <version>${project.version}</version>
+                </plugin>            
                 <!-- Skip Staging Plugin -->
                 <plugin>
                     <groupId>org.sonatype.central</groupId>
                     <artifactId>central-publishing-maven-plugin</artifactId>
-                    <inherited>false</inherited>
+                    <configuration>
+                        <skipPublishing>false</skipPublishing>
+                    </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <version>1.7.2</version>
+                </plugin>                
             </plugins>
         </pluginManagement>
+        
+        <plugins>
+            <!-- Skip Enforcer Rule -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>enforce-no-bad-sections</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Don't enforce SemVer for this project -->
+                            <rulesToSkip>requireProperty</rulesToSkip>
+                            <failIfNoRules>false</failIfNoRules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>        
     </build>
 </project>
