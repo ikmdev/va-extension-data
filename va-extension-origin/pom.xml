@@ -20,7 +20,7 @@
 
 	<properties>
 		<data-artifact.groupId>dev.ikm.data.vaextension</data-artifact.groupId>
-		<data-artifact.artifactId>va-extension-origin</data-artifact.artifactId>
+		<data-artifact.artifactId>vaextension-origin</data-artifact.artifactId>
 		<data-artifact.version>vaextension-${source.version}+1.0.0-SNAPSHOT</data-artifact.version>
 	</properties>
 
