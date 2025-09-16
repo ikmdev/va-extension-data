@@ -20,7 +20,7 @@
 
 	<properties>
 		<data-artifact.groupId>dev.ikm.tinkar.data</data-artifact.groupId>
-		<data-artifact.artifactId>${dataStore}</data-artifact.artifactId>
+		<data-artifact.artifactId>vaextension</data-artifact.artifactId>
 		<data-artifact.version>${source.version}+1.0.0-SNAPSHOT</data-artifact.version>
 	</properties>
 
@@ -75,8 +75,7 @@
 											</formats>
 											<fileSets>
 												<fileSet>
-													<outputDirectory>
-														${dataStore}</outputDirectory>
+													<outputDirectory>vaextension</outputDirectory>
 													<directory>
 														${dataStoreLocation}/${dataStore}</directory>
 													<includes>
