@@ -48,7 +48,7 @@
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>dev.ikm.tinkar.data</groupId>
-                                    <artifactId>snomedct-international</artifactId>
+                                    <artifactId>snomedct-us</artifactId>
                                     <version>${snomedct.version}</version>
                                     <classifier>reasoned-sa</classifier>
                                     <type>zip</type>

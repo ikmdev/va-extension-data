@@ -41,8 +41,8 @@
         <source.version>20250315</source.version>
         <source.zip>${user.home}/Downloads/VA_SNOMED_Extension_Release_Snapshot_20250315.zip</source.zip>
         <dataStoreLocation>${project.parent.basedir}/target</dataStoreLocation>
-        <dataStore>snomedct-international</dataStore>
-        <snomedct.version>20250801T120000Z+1.0.0-SNAPSHOT</snomedct.version>
+        <dataStore>snomedct-us</dataStore>
+        <snomedct.version>US1000124_20250301T120000Z+1.0.0-SNAPSHOT</snomedct.version>
         
         <maven.compiler.source>23</maven.compiler.source>
         <maven.compiler.target>23</maven.compiler.target>
