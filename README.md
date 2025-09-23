@@ -40,7 +40,7 @@ More information can be found on: https://snomed.org/downloads/
 
    To install origin artifact to a local M2 repository, run the following command:
    ```
-   mvn clean install -f va-exntension-origin -Ptinkarbuild,generateDataLocal -Dmaven.build.cache.enabled=false
+   mvn clean install -f va-extension-origin -Ptinkarbuild,generateDataLocal -Dmaven.build.cache.enabled=false
    ```
 
 **Run Transformation Pipeline**
