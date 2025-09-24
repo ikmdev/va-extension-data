@@ -30,17 +30,18 @@ More information can be found on: https://snomed.org/downloads/
 
 2. Ensure the properties defined in va-extension-data/pom.xml are set to the correct file names:
    - <source.zip>
+   - <snomedct.version> (requires SNOMEDCT US origin artifact)
 
 3. Run origin packaging and deployment.
 
    To deploy origin artifact to a shared Nexus repository, run the following command, specifying the repository ID and URL in `-DaltDeploymentRepository`
    ```
-   mvn clean deploy -f va-extension-origin -Ptinkarbuild -DaltDeploymentRepository=tinkar-snapshot::https://nexus.tinkar.org/repository/maven-snapshots/ -Dmaven.build.cache.enabled=false
+   mvn --projects va-extension-origin --also-make clean deploy -Ptinkarbuild -DaltDeploymentRepository=tinkar-snapshot::https://nexus.tinkar.org/repository/maven-snapshots/ -Dmaven.build.cache.enabled=false
    ```
 
    To install origin artifact to a local M2 repository, run the following command:
    ```
-   mvn clean install -f va-extension-origin -Ptinkarbuild,generateDataLocal -Dmaven.build.cache.enabled=false
+   mvn --projects va-extension-origin --also-make clean install -Ptinkarbuild,generateDataLocal -Dmaven.build.cache.enabled=false
    ```
 
 **Run Transformation Pipeline**
@@ -54,6 +55,6 @@ The transformation pipeline can be built after origin data is available in Nexus
 
 2. Deploy transformed data artifacts to Nexus, run the following command:
    ```
-   mvn deploy -f va-extension-export -Ptinkarbuild -DaltDeploymentRepository=tinkar-snapshot::https://nexus.tinkar.org/repository/maven-snapshots/ -Dmaven.build.cache.enabled=false
+   mvn --projects va-extension-export --also-make deploy -Ptinkarbuild -DaltDeploymentRepository=tinkar-snapshot::https://nexus.tinkar.org/repository/maven-snapshots/ -Dmaven.build.cache.enabled=false
    ```
    
