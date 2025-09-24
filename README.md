@@ -30,7 +30,7 @@ More information can be found on: https://snomed.org/downloads/
 
 2. Ensure the properties defined in va-extension-data/pom.xml are set to the correct file names:
    - <source.zip>
-   - <snomedct.version> (requires SNOMEDCT US origin artifact)
+   - <snomedct.version> (requires SNOMEDCT US data artifact)
 
 3. Run origin packaging and deployment.
 
